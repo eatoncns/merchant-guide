@@ -10,7 +10,8 @@ namespace MerchantGuide.Acceptance
         [Given(@"translation (.*)")]
         public void GivenTranslation(string translation)
         {
-            var guide = new Guide(translation);
+            var guide = new Guide();
+            guide.addTranslation(translation);
             ScenarioContext.Current.Set<Guide>(guide);
         }
         
