@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Linq;
 using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
 
 namespace MerchantGuide.Acceptance
 {
@@ -20,7 +20,7 @@ namespace MerchantGuide.Acceptance
         public void GivenTheseTranslations(Table table)
         {
             var guide = new Guide();
-            var translations = table.CreateSet<string>();
+            var translations = table.Rows.Select(r => r["translation"]);
             foreach (string translation in translations)
             {
                 guide.addTranslation(translation);
