@@ -19,14 +19,14 @@ namespace MerchantGuide.Acceptance
         {
             var guide = ScenarioContext.Current.Get<Guide>();
             var result = guide.ask(question);
-            ScenarioContext.Current.Set<int>(result);
+            ScenarioContext.Current.Set<string>(result);
         }
         
         [Then(@"the result should be (.*)")]
-        public void ThenTheResultShouldBe(int expectedResult)
+        public void ThenTheResultShouldBe(string expectedResult)
         {
-            var actualResult = ScenarioContext.Current.Get<int>();
-            Assert.AreEqual<int>(expectedResult, actualResult);
+            var actualResult = ScenarioContext.Current.Get<string>();
+            Assert.AreEqual<string>(expectedResult, actualResult);
         }
     }
 }

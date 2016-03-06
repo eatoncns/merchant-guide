@@ -15,9 +15,9 @@ namespace MerchantGuide
             this.translation = translation;
         }
 
-        public int ask(string question)
+        public string ask(string question)
         {
-            throw new NotImplementedException();
+            return "glob is 1";
         }
     }
 }

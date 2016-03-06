@@ -6,4 +6,4 @@
 Scenario: Single word translation
 	Given translation glob is I
 	When I ask how much is glob?
-	Then the result should be 1
+	Then the result should be glob is 1
