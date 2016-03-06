@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="GuideTests\Ask_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionTests\Constructor_Should.cs" />
     <Compile Include="RomanNumeralConverterTests\Convert_Should.cs" />
   </ItemGroup>
   <ItemGroup>

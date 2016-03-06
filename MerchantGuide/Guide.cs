@@ -27,18 +27,17 @@ namespace MerchantGuide
             }
         }
 
-        public string ask(string question)
+        public string ask(string inputQuestion)
         {
-            Match match = Regex.Match(question, @"how much is ([a-zA-Z ]+)\?");
-            if (match.Success)
+            Question question = new Question(inputQuestion);
+            if (question.Valid)
             {
-                var valueString = match.Groups[1].ToString();
                 var romanNumeral = "";
-                foreach (string word in valueString.Split(' '))
+                foreach (string word in question.Value.Split(' '))
                 {
                     romanNumeral += translateWord(word);
                 }
-                return valueString + " is " + RomanNumeralConverter.ConvertToArabic(romanNumeral); 
+                return question.Value + " is " + RomanNumeralConverter.ConvertToArabic(romanNumeral); 
             }
             return "I have no idea what you are talking about";
         }
