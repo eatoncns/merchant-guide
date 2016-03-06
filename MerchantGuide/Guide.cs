@@ -10,11 +10,6 @@ namespace MerchantGuide
     public class Guide
     {
         private Dictionary<string, char> dictionary;
-        private static readonly Dictionary<char, int> numerals = new Dictionary<char, int>()
-        {
-            {'I', 1},
-            {'V', 5},
-        };
 
         public Guide()
         {
@@ -45,8 +40,8 @@ namespace MerchantGuide
 
         private string translateWord(string word)
         {
-            var symbol = dictionary[word];
-            return numerals[symbol].ToString();
+            var symbol = dictionary[word].ToString();
+            return RomanNumeralConverter.Convert(symbol).ToString();
         }
     }
 }
