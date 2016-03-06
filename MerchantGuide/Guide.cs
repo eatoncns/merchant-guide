@@ -26,8 +26,15 @@ namespace MerchantGuide
             Question question = new Question(inputQuestion);
             if (question.Valid)
             {
-                var romanNumeral = translationNotes.translateToRomanNumeral(question.Value);
-                return question.Value + " is " + RomanNumeralConverter.ConvertToArabic(romanNumeral); 
+                try
+                {
+                    var romanNumeral = translationNotes.translateToRomanNumeral(question.Value);
+                    return question.Value + " is " + RomanNumeralConverter.ConvertToArabic(romanNumeral);
+                }
+                catch(UnknownWordException ex)
+                {
+                    return "No translation for " + ex.Word;
+                }
             }
             return "I have no idea what you are talking about";
         }

@@ -22,5 +22,21 @@ namespace MerchantGuide.Test.TranslationNotesTests
             var result = translationNotes.translateToRomanNumeral("glob prok");
             Assert.AreEqual<string>("IV", result);
         }
+
+        [TestMethod]
+        public void Throw_Exception_For_Unknown_Word()
+        {
+            UnknownWordException expectedException = null;
+            try
+            {
+                translationNotes.translateToRomanNumeral("glob");
+            }
+            catch(UnknownWordException ex)
+            {
+                expectedException = ex;
+            }
+            Assert.IsNotNull(expectedException);
+            Assert.AreEqual<string>("glob", expectedException.Word);
+        }
     }
 }

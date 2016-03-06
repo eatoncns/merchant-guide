@@ -30,6 +30,13 @@ namespace MerchantGuide.Test.GuideTests
         }
 
         [TestMethod]
+        public void Return_Error_String_When_Unknown_Word_In_Question()
+        {
+            var answer = guide.ask("how much is foo?");
+            Assert.AreEqual<string>("No translation for foo", answer);
+        }
+
+        [TestMethod]
         public void Perform_Single_Word_Translation()
         {
             guide.addTranslation("glob is I");

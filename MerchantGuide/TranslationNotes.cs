@@ -33,7 +33,12 @@ namespace MerchantGuide
             var romanNumeral = "";
             foreach (string word in value.Split(' '))
             {
+                if (!wordToNumeralDictionary.ContainsKey(word))
+                {
+                    throw new UnknownWordException(word);
+                }
                 romanNumeral += wordToNumeralDictionary[word].ToString();
+
             }
             return romanNumeral;
         }

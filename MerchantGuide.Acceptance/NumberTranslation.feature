@@ -3,10 +3,16 @@
 	I want to translate from alien language to numbers
 	So that I am never short changed
 
-Scenario: Single word translation
-	Given translation glob is I
-	When I ask how much is glob?
-	Then the result should be glob is 1
+Scenario Outline: Single word translation
+	Given translation glob is <numeral>
+	When I ask how much is <value>?
+	Then the result should be <result>
+	
+	Scenarios: 
+	  | value | numeral | result                 |
+	  | glob  | I       | glob is 1              |
+	  | glob  | V       | glob is 5              |
+	  | foo   | I       | No translation for foo |
 
 Scenario: Multi-word translation
 	Given these translations
