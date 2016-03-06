@@ -85,6 +85,35 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Multi-word translation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NumberTranslation")]
+        public virtual void Multi_WordTranslation()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multi-word translation", ((string[])(null)));
+#line 11
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "translation"});
+            table1.AddRow(new string[] {
+                        "glob is I"});
+            table1.AddRow(new string[] {
+                        "prok is V"});
+            table1.AddRow(new string[] {
+                        "pish is X"});
+            table1.AddRow(new string[] {
+                        "tegj is L"});
+#line 12
+ testRunner.Given("these translations", ((string)(null)), table1, "Given ");
+#line 18
+ testRunner.When("I ask how much is pish tegj glob glob?", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 19
+ testRunner.Then("the result should be pish tegj glob glob is 42", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

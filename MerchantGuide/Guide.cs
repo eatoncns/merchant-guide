@@ -29,19 +29,23 @@ namespace MerchantGuide
 
         public string ask(string question)
         {
-            Match match = Regex.Match(question, @"how much is ([a-zA-Z]+)");
+            Match match = Regex.Match(question, @"how much is ([a-zA-Z ]+)\?");
             if (match.Success)
             {
-                var word = match.Groups[1].ToString();
-                return word + " is " + translateWord(word);
+                var valueString = match.Groups[1].ToString();
+                var romanNumeral = "";
+                foreach (string word in valueString.Split(' '))
+                {
+                    romanNumeral += translateWord(word);
+                }
+                return valueString + " is " + RomanNumeralConverter.Convert(romanNumeral).ToString(); 
             }
             return "I have no idea what you are talking about";
         }
 
         private string translateWord(string word)
         {
-            var symbol = dictionary[word].ToString();
-            return RomanNumeralConverter.Convert(symbol).ToString();
+            return dictionary[word].ToString();
         }
     }
 }

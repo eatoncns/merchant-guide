@@ -7,3 +7,13 @@ Scenario: Single word translation
 	Given translation glob is I
 	When I ask how much is glob?
 	Then the result should be glob is 1
+
+Scenario: Multi-word translation
+	Given these translations
+	| translation |
+	| glob is I   |
+	| prok is V   |
+	| pish is X   |
+	| tegj is L   |
+	When I ask how much is pish tegj glob glob?
+	Then the result should be pish tegj glob glob is 42

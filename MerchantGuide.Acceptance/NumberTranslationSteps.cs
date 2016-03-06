@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 
 namespace MerchantGuide.Acceptance
 {
@@ -14,7 +15,19 @@ namespace MerchantGuide.Acceptance
             guide.addTranslation(translation);
             ScenarioContext.Current.Set<Guide>(guide);
         }
-        
+
+        [Given(@"these translations")]
+        public void GivenTheseTranslations(Table table)
+        {
+            var guide = new Guide();
+            var translations = table.CreateSet<string>();
+            foreach (string translation in translations)
+            {
+                guide.addTranslation(translation);
+            }
+            ScenarioContext.Current.Set<Guide>(guide);
+        }
+
         [When(@"I ask (.*)")]
         public void WhenIAsk(string question)
         {

@@ -15,19 +15,11 @@ namespace MerchantGuide.Test.GuideTests
         }
 
         [TestMethod]
-        public void Perform_Single_Word_Translation()
-        {
-            guide.addTranslation("glob is I");
-            var answer = guide.ask("how much is glob?");
-            Assert.AreEqual<string>("glob is 1", answer);
-        }
-
-        [TestMethod]
         public void Return_String_Beginning_With_Question_Textual_Value()
         {
             guide.addTranslation("foo is I");
             var answer = guide.ask("how much is foo?");
-            Assert.AreEqual<string>("foo is 1", answer);
+            StringAssert.StartsWith(answer, "foo is ");
         }
 
         [TestMethod]
@@ -35,6 +27,22 @@ namespace MerchantGuide.Test.GuideTests
         {
             var answer = guide.ask("how much wood could a woodchuck chuck if a woodchuck could chuck wood?");
             Assert.AreEqual<string>("I have no idea what you are talking about", answer);
+        }
+
+        [TestMethod]
+        public void Perform_Single_Word_Translation()
+        {
+            guide.addTranslation("glob is I");
+            var answer = guide.ask("how much is glob?");
+            StringAssert.EndsWith(answer, " 1");
+        }
+
+        [TestMethod]
+        public void Perform_Multi_Word_Translation()
+        {
+            guide.addTranslation("glob is I");
+            var answer = guide.ask("how much is glob glob?");
+            Assert.AreEqual<string>("glob glob is 2", answer);
         }
 
         [TestMethod]
