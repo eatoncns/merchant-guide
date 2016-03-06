@@ -1,2 +1,2 @@
 # merchant-guide
-C# toy application
+Small code exercise written in C#
