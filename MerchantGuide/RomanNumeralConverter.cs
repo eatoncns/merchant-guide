@@ -19,7 +19,7 @@ namespace MerchantGuide
             {'M', 1000}
         };
 
-        public static int Convert(string romanNumeral)
+        public static string ConvertToArabic(string romanNumeral)
         {
            
             int result = 0;
@@ -31,7 +31,7 @@ namespace MerchantGuide
                 result += addition;
                 last = value;
             }
-            return result;
+            return result.ToString();
         }
     }
 }

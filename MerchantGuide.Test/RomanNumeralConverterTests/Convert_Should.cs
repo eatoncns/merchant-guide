@@ -9,13 +9,13 @@ namespace MerchantGuide.Test.RomanNumeralConverterTests
         [TestMethod]
         public void Translate_Numerals_Correctly()
         {
-            Assert.AreEqual<int>(1, RomanNumeralConverter.Convert("I"));
-            Assert.AreEqual<int>(2, RomanNumeralConverter.Convert("II"));
-            Assert.AreEqual<int>(4, RomanNumeralConverter.Convert("IV"));
-            Assert.AreEqual<int>(5, RomanNumeralConverter.Convert("V"));
-            Assert.AreEqual<int>(10, RomanNumeralConverter.Convert("X"));
-            Assert.AreEqual<int>(2006, RomanNumeralConverter.Convert("MMVI"));
-            Assert.AreEqual<int>(1944, RomanNumeralConverter.Convert("MCMXLIV"));
+            Assert.AreEqual<string>("1", RomanNumeralConverter.ConvertToArabic("I"));
+            Assert.AreEqual<string>("2", RomanNumeralConverter.ConvertToArabic("II"));
+            Assert.AreEqual<string>("4", RomanNumeralConverter.ConvertToArabic("IV"));
+            Assert.AreEqual<string>("5", RomanNumeralConverter.ConvertToArabic("V"));
+            Assert.AreEqual<string>("10", RomanNumeralConverter.ConvertToArabic("X"));
+            Assert.AreEqual<string>("2006", RomanNumeralConverter.ConvertToArabic("MMVI"));
+            Assert.AreEqual<string>("1944", RomanNumeralConverter.ConvertToArabic("MCMXLIV"));
         }
     }
 }

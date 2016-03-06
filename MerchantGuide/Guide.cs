@@ -38,7 +38,7 @@ namespace MerchantGuide
                 {
                     romanNumeral += translateWord(word);
                 }
-                return valueString + " is " + RomanNumeralConverter.Convert(romanNumeral).ToString(); 
+                return valueString + " is " + RomanNumeralConverter.ConvertToArabic(romanNumeral); 
             }
             return "I have no idea what you are talking about";
         }
