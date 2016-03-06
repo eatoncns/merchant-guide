@@ -42,15 +42,16 @@ namespace MerchantGuide.Test.GuideTests
         {
             guide.addTranslation("glob is I");
             var answer = guide.ask("how much is glob glob?");
-            Assert.AreEqual<string>("glob glob is 2", answer);
+            StringAssert.EndsWith(answer, " 2");
         }
 
         [TestMethod]
-        public void Return_String_Containing_Correct_Translation_From_Roman_Numeral()
+        public void Perform_Multi_Word_Multi_Translation()
         {
-            guide.addTranslation("glob is V");
-            var answer = guide.ask("how much is glob?");
-            Assert.AreEqual<string>("glob is 5", answer);
+            guide.addTranslation("glob is I");
+            guide.addTranslation("prok is V");
+            var answer = guide.ask("how much is glob prok?");
+            StringAssert.EndsWith(answer, " 4");
         }
     }
 }
