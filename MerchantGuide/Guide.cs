@@ -9,11 +9,11 @@ namespace MerchantGuide
 {
     public class Guide
     {
-        private Dictionary<string, char> dictionary;
+        private Dictionary<string, char> wordToNumeralDictionary;
 
         public Guide()
         {
-            this.dictionary = new Dictionary<string, char>();
+            this.wordToNumeralDictionary = new Dictionary<string, char>();
         }
 
         public void addTranslation(string translation)
@@ -23,7 +23,7 @@ namespace MerchantGuide
             {
                 var word = match.Groups[1].ToString();
                 var romanNumeral = match.Groups[2].ToString()[0];
-                this.dictionary.Add(word, romanNumeral);
+                this.wordToNumeralDictionary.Add(word, romanNumeral);
             }
         }
 
@@ -32,19 +32,20 @@ namespace MerchantGuide
             Question question = new Question(inputQuestion);
             if (question.Valid)
             {
-                var romanNumeral = "";
-                foreach (string word in question.Value.Split(' '))
-                {
-                    romanNumeral += translateWord(word);
-                }
+                var romanNumeral = translateToRomanNumeral(question.Value);
                 return question.Value + " is " + RomanNumeralConverter.ConvertToArabic(romanNumeral); 
             }
             return "I have no idea what you are talking about";
         }
 
-        private string translateWord(string word)
+        private string translateToRomanNumeral(string value)
         {
-            return dictionary[word].ToString();
+            var romanNumeral = "";
+            foreach (string word in value.Split(' '))
+            {
+                romanNumeral += wordToNumeralDictionary[word].ToString();
+            }
+            return romanNumeral;
         }
     }
 }
