@@ -40,6 +40,10 @@ namespace MerchantGuide
                 romanNumeral += wordToNumeralDictionary[word].ToString();
 
             }
+            if (!RomanNumeralValidator.IsValidNumeral(romanNumeral))
+            {
+                throw new InvalidNumeralException(romanNumeral);
+            }
             return romanNumeral;
         }
     }

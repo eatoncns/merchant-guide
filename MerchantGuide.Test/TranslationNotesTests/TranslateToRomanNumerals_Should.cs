@@ -38,5 +38,23 @@ namespace MerchantGuide.Test.TranslationNotesTests
             Assert.IsNotNull(expectedException);
             Assert.AreEqual<string>("glob", expectedException.Word);
         }
+
+        [TestMethod]
+        public void Throw_Exception_For_Invalid_Result_Numeral()
+        {
+            translationNotes.addTranslation("glob is I");
+            translationNotes.addTranslation("prok is V");
+            InvalidNumeralException expectedException = null;
+            try
+            {
+                translationNotes.translateToRomanNumeral("glob glob prok");
+            }
+            catch(InvalidNumeralException ex)
+            {
+                expectedException = ex;
+            }
+            Assert.IsNotNull(expectedException);
+            Assert.AreEqual<string>("IIV", expectedException.InvalidNumeral);
+        }
     }
 }

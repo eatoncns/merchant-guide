@@ -14,12 +14,18 @@ Scenario Outline: Single word translation
 	  | glob  | V       | glob is 5              |
 	  | foo   | I       | No translation for foo |
 
-Scenario: Multi-word translation
+Scenario Outline: Multi-word translation
 	Given these translations
 	| translation |
 	| glob is I   |
 	| prok is V   |
 	| pish is X   |
 	| tegj is L   |
-	When I ask how much is pish tegj glob glob?
-	Then the result should be pish tegj glob glob is 42
+	When I ask how much is <value>?
+	Then the result should be <result>
+
+	Scenarios:
+	  | value               | result                                |
+	  | pish tegj glob glob | pish tegj glob glob is 42             |
+	  | glob glob prok      | glob glob prok is invalid numeral IIV |
+	  | glob foo dunk       | No translation for foo                |

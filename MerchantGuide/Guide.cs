@@ -35,6 +35,10 @@ namespace MerchantGuide
                 {
                     return "No translation for " + ex.Word;
                 }
+                catch(InvalidNumeralException ex)
+                {
+                    return question.Value + " is invalid numeral " + ex.InvalidNumeral;
+                }
             }
             return "I have no idea what you are talking about";
         }

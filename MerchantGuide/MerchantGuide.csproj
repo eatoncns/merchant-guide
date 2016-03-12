@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RomanNumeralValidator.cs" />
+    <Compile Include="InvalidNumeralException.cs" />
     <Compile Include="UnknownWordException.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="RomanNumeralConverter.cs" />

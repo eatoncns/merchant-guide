@@ -37,6 +37,15 @@ namespace MerchantGuide.Test.GuideTests
         }
 
         [TestMethod]
+        public void Return_Error_String_For_Invalid_Numeral()
+        {
+            guide.addTranslation("glob is I");
+            guide.addTranslation("prok is V");
+            var answer = guide.ask("how much is glob glob prok?");
+            Assert.AreEqual<string>("glob glob prok is invalid numeral IIV", answer);
+        }
+
+        [TestMethod]
         public void Perform_Single_Word_Translation()
         {
             guide.addTranslation("glob is I");

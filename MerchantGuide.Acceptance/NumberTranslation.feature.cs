@@ -122,12 +122,9 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Multi-word translation")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NumberTranslation")]
-        public virtual void Multi_WordTranslation()
+        public virtual void Multi_WordTranslation(string value, string result, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multi-word translation", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multi-word translation", exampleTags);
 #line 17
 this.ScenarioSetup(scenarioInfo);
 #line hidden
@@ -144,11 +141,47 @@ this.ScenarioSetup(scenarioInfo);
 #line 18
  testRunner.Given("these translations", ((string)(null)), table1, "Given ");
 #line 24
- testRunner.When("I ask how much is pish tegj glob glob?", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I ask how much is {0}?", value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 25
- testRunner.Then("the result should be pish tegj glob glob is 42", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the result should be {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Multi-word translation: pish tegj glob glob")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NumberTranslation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "pish tegj glob glob")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "pish tegj glob glob")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:result", "pish tegj glob glob is 42")]
+        public virtual void Multi_WordTranslation_PishTegjGlobGlob()
+        {
+            this.Multi_WordTranslation("pish tegj glob glob", "pish tegj glob glob is 42", ((string[])(null)));
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Multi-word translation: glob glob prok")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NumberTranslation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "glob glob prok")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "glob glob prok")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:result", "glob glob prok is invalid numeral IIV")]
+        public virtual void Multi_WordTranslation_GlobGlobProk()
+        {
+            this.Multi_WordTranslation("glob glob prok", "glob glob prok is invalid numeral IIV", ((string[])(null)));
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Multi-word translation: glob foo dunk")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NumberTranslation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "glob foo dunk")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "glob foo dunk")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:result", "No translation for foo")]
+        public virtual void Multi_WordTranslation_GlobFooDunk()
+        {
+            this.Multi_WordTranslation("glob foo dunk", "No translation for foo", ((string[])(null)));
+#line hidden
         }
     }
 }
